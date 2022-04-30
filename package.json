@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "cross-fetch": "^3.1.5"
+  },
+  "name": "trelloapi",
+  "description": "Started by trying to fetch the url to my boards, ``curl`` command seems to work just fine, however node 16 doesn't recognize fetch call, so I installed cross-fetch:\r > npm install --save cross-fetch",
+  "version": "1.0.0",
+  "main": "trello.js",
+  "devDependencies": {},
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Burstniart/trello.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Burstniart/trello/issues"
+  },
+  "homepage": "https://github.com/Burstniart/trello#readme"
+}
