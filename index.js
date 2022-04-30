@@ -1,5 +1,6 @@
 import fetch from 'cross-fetch';
 
+// Consulting your boards
 const fetchTrello = () => {
     const url = 'https://api.trello.com/1/members/me/boards?key=&token=';
     fetch(url).then((res) => {
@@ -14,3 +15,17 @@ const fetchTrello = () => {
 }
 
 fetchTrello();
+
+// Creating a new board
+fetch('https://api.trello.com/1/boards/?name={name}&key={API}&token={token}', {
+        method: 'POST'
+      })
+        .then(response => {
+          console.log(
+            `Response: ${response.status} ${response.statusText}`
+          );
+          return response.text();
+        })
+        .then(text => console.log(text))
+        .catch(err => console.error(err));
+
