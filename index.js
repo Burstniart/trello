@@ -57,3 +57,19 @@ fetch('https://api.trello.com/1/boards/{id}?key=APIKey&token=APIToken', {
     })
     .then(text => console.log(text))
     .catch(err => console.error(err));
+
+// Create a new list
+fetch('https://api.trello.com/1/boards/{id}/lists?name={name}&key=APIKey&token=APIToken', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json'
+  }
+})
+  .then(response => {
+    console.log(
+      `Response: ${response.status} ${response.statusText}`
+    );
+    return response.text();
+  })
+  .then(text => console.log(text))
+  .catch(err => console.error(err));

@@ -80,7 +80,7 @@ fetch('https://api.trello.com/1/boards/{id}?key=APIKey&token=APIToken', {
 
 As we've done before we simply replace values such as ``{id}``  with the id of the board you wish to consult, ``APIkey`` and ``APIToken`` with your own keys.
 
-## Get a board
+## Get cards on a board
 Here is the snippet for getting the cards on a board, we jus need to know the board's id, our API key and token, and use them like we've done before.
 
 ```javascript
@@ -103,6 +103,25 @@ fetch('https://api.trello.com/1/boards/{id}/cards?key=APIKey&token=APIToken', {
 
 The response from consulting the cards on a board is much bigger than the one we get from consulting jus tthe board.
 
+## Create a new list
+Now, we want to create a new card buuuuuuut cards go inside lists, that's just how it is, so first let's look at how to create lists, it's actually very much like creating a new board, we simply need to know the ``id`` of the board we want our list to be created in, give it a ``name`` and the API ``key`` and ``token``:
 
+```javascript
+fetch('https://api.trello.com/1/boards/{id}/lists?name={name}&key=APIKey&token=APIToken', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json'
+  }
+})
+  .then(response => {
+    console.log(
+      `Response: ${response.status} ${response.statusText}`
+    );
+    return response.text();
+  })
+  .then(text => console.log(text))
+  .catch(err => console.error(err));
+  ```
+  > The API will respond with a small object confirming that our list has been created and some details about it.
 
 
