@@ -9,7 +9,9 @@ Add the following key-value pair to the ``package.json`` file to use ES modules 
 >"type": "module"
 
 Then proceeded to import fetch from the package at the top of the **test.js** file (not commited to this repo).
-## Consult your boards {#check}
+
+## Check boards 
+
 ```javascript
 import fetch from 'cross-fetch';
 
@@ -57,7 +59,7 @@ Then the API will reward us with this totally not confusing at all message that 
 Now, if we want to get the info of a board we simply need to know it's id, and that's where the totally not confusing at all message comes in handy, see this line right here:
 >"id":"626cc3b99a29692c758e43b2","name":"testBoard0","desc":"",
 
-At the very beginning it provides us whith the board's id, which we could also know if we ran the [Check boards](#consult-your-boards-check) snippet. Here is the snippet for getting a single board based on it's id:
+At the very beginning it provides us whith the board's id, which we could also know if we ran the [Check boards](#check-boards) snippet. Here is the snippet for getting a single board based on it's id:
 
 ```javascript
 fetch('https://api.trello.com/1/boards/{id}?key=APIKey&token=APIToken', {
@@ -77,3 +79,30 @@ fetch('https://api.trello.com/1/boards/{id}?key=APIKey&token=APIToken', {
 ```
 
 As we've done before we simply replace values such as ``{id}``  with the id of the board you wish to consult, ``APIkey`` and ``APIToken`` with your own keys.
+
+## Get a board
+Here is the snippet for getting the cards on a board, we jus need to know the board's id, our API key and token, and use them like we've done before.
+
+```javascript
+fetch('https://api.trello.com/1/boards/{id}/cards?key=APIKey&token=APIToken', {
+    method: 'GET'
+  })
+    .then(response => {
+      console.log(
+        `Response: ${response.status} ${response.statusText}`
+      );
+      return response.text();
+    })
+    .then(text => console.log(text))
+    .catch(err => console.error(err));
+```
+> When given the id of an empty board the API will respond with a
+``Response: 200 OK`` ``[]``
+
+> While using the id of a board with cards will give you a full json type repsonse.
+
+The response from consulting the cards on a board is much bigger than the one we get from consulting jus tthe board.
+
+
+
+

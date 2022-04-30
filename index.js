@@ -45,3 +45,15 @@ fetch('https://api.trello.com/1/boards/{id}?key=APIKey&token=APIToken', {
   .then(text => console.log(text))
   .catch(err => console.error(err));
   
+  //  Get cards on a board
+  fetch('https://api.trello.com/1/boards/{id}/cards?key=APIKey&token=APIToken', {
+    method: 'GET'
+  })
+    .then(response => {
+      console.log(
+        `Response: ${response.status} ${response.statusText}`
+      );
+      return response.text();
+    })
+    .then(text => console.log(text))
+    .catch(err => console.error(err));
