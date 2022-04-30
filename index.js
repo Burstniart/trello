@@ -73,3 +73,19 @@ fetch('https://api.trello.com/1/boards/{id}/lists?name={name}&key=APIKey&token=A
   })
   .then(text => console.log(text))
   .catch(err => console.error(err));
+
+// Creat a new card in a list
+fetch('https://api.trello.com/1/cards?idList={idList}&name={name}&key=APIKey&token=APIToken', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json'
+  }
+})
+  .then(response => {
+    console.log(
+      `Response: ${response.status} ${response.statusText}`
+    );
+    return response.text();
+  })
+  .then(text => console.log(text))
+  .catch(err => console.error(err));

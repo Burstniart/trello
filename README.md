@@ -103,6 +103,7 @@ fetch('https://api.trello.com/1/boards/{id}/cards?key=APIKey&token=APIToken', {
 
 The response from consulting the cards on a board is much bigger than the one we get from consulting jus tthe board.
 
+
 ## Create a new list
 Now, we want to create a new card buuuuuuut cards go inside lists, that's just how it is, so first let's look at how to create lists, it's actually very much like creating a new board, we simply need to know the ``id`` of the board we want our list to be created in, give it a ``name`` and the API ``key`` and ``token``:
 
@@ -124,4 +125,27 @@ fetch('https://api.trello.com/1/boards/{id}/lists?name={name}&key=APIKey&token=A
   ```
   > The API will respond with a small object confirming that our list has been created and some details about it.
 
+## Create a new card
+Alright, now we're onto bussines:
+Here's the snippet to create a new card given the ``idList`` BUT in it's simplest form it does not require us to give it a name, however since we've been naming things from the beginning we'll continue to do so by adding the request for name as query parameters like this: ``&name={name}`` which indicates the API that the new card to be created in our list, defined as ``{idList}`` shall be brought onto this world with a name!
+``APIKey`` and ``APIToken`` you now by now, your keys go in here.
 
+```javascript
+fetch('https://api.trello.com/1/cards?idList={idList}&name={name}&key=APIKey&token=APIToken', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json'
+  }
+})
+  .then(response => {
+    console.log(
+      `Response: ${response.status} ${response.statusText}`
+    );
+    return response.text();
+  })
+  .then(text => console.log(text))
+  .catch(err => console.error(err));
+  ```
+  > The response is the json equivalen of a card like we've seen before
+
+  
